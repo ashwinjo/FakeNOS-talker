@@ -10,6 +10,12 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
+from fakenos import FakeNOS
+
+def start_fakenos():
+    network_os = FakeNOS(inventory='/Users/ashwjosh/AgentUniverse/ReActAgent/FakeNOS_talker/FakeNetwork/inventory.yaml')
+    network_os.start()
+
 
 def get_platform_credentials(device_type):
 
@@ -42,7 +48,7 @@ def get_platform_credentials(device_type):
 
 def get_device_type(device_name):
     # Create/connect to the SQLite database
-    conn = sqlite3.connect('/Users/ashwjosh/AgentUniverse/ReActAgent/NetworkAutomationAgent/FakeNetwork/networkdb/devices.db')
+    conn = sqlite3.connect('/Users/ashwjosh/AgentUniverse/ReActAgent/FakeNOS_talker/FakeNetwork/networkdb/devices.db')
     cursor = conn.cursor()
 
     # Execute the query to get device_platform based on device_name
